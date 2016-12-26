@@ -1,0 +1,93 @@
+
+#contador_acessos{
+ 
+ background-color: #ddd;
+ text-align:center;
+ position: relative;
+ bottom:0;
+ width: 39%;
+ color:#333; 
+ height: 40px;
+ border-radius:5px;
+ float: right;
+  
+}
+.footer{
+  height: 40px; 
+  background-color: #E6E6FE;
+  bottom: 0;
+  padding-top:10px;  
+  border-radius:5px;
+  position:relative;
+  width: 61%;   
+  float: left;  
+  
+ }
+ 
+.vermelho_vivo{
+font:14px arial;
+background-image:linear-gradient(to bottom,#f2dede 0,#e7c3c3 100%);
+border-color:#dca7a7;
+//background-color:#f2dede;
+//border-color:#ebccd1;
+color:#a94442;
+border:1px solid transparent;
+border-radius:4px;
+
+} 
+
+.main{
+height:40px;
+width: 100%;
+left:0;
+margin-top:20px;
+
+//background-image:url('logo_prev.jpg');
+background-color:#39b3d7;
+text-align:left;
+border-radius:10px;
+}
+
+.logon{
+ position: absolute; 
+ top : 0px; 
+ right: 0;
+ background-color : #5bc0de;
+ //background-color:#39b3d7;  
+ width : 30%; 
+ text-align: center;  
+ border-radius : 10px;    
+ margin-top:20px;
+ //-webkit-transform: rotate(-90deg);//ROTACIONA O ELEMENTO
+}
+
+#btn_sair{  
+ position: absolute; 
+ top:0;
+ right:0;
+ border-radius:10px;
+ height: 40px;
+ color: black; 
+ font: bold 12px verdana;
+ text-align:center;
+}
+
+html, body{
+ height : 96%;   
+}
+
+#tudo{
+ width:100%;
+ position:relative;  /*Contexto de posicionamento */
+// background:#bbbccc; 
+ background:#ddd; 
+
+ text-align:left;
+ height:100%;
+ //border:dotted #999;
+ border:dotted GREEN 1px;
+ //border-width: 0 2px;      
+ overflow: auto; 
+ margin-bottom:1px;
+ 
+}
