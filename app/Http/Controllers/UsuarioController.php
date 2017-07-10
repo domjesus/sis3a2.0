@@ -19,7 +19,7 @@ class UsuarioController extends Controller
 
     public function listar(Request $request){
     	
-        return view('usuarios.listar',['users'=>DB::select('select * from users')]);	
+        return view('usuarios.listar',['users'=>User::all()->where('id_ol',session('id_ol'))]);	
     }
 
     public function showform(Request $request){
@@ -36,7 +36,9 @@ class UsuarioController extends Controller
 
 	   	$excluded_fields[] = 'passwd_confirm';
     	$povoa = new povoaObj(new User,$request,$excluded_fields);
-    	$model = $povoa->povoa();
+        $model = $povoa->povoa();
+        
+        $model->__set('passwd',md5($request->passwd));
         
     	if(!$model->save())
     		return "Erro ao gravar!";
@@ -47,13 +49,14 @@ class UsuarioController extends Controller
 
     public function alterar(Request $request){
 
-    	$excluded_fields[] = 'pass"wd_confirm';
+    	$excluded_fields = ['passwd_confirm','passwd'];
         
                 $usuario = User::find($request->id);
                 $povoa_model = new povoaObj($usuario,$request,$excluded_fields);
                 
+
                 $model = $povoa_model->povoa();
-        
+                $model->__set('passwd',md5($request->passwd));
                 if(!$model->save())
                     return "Erro ao gravar!";
         

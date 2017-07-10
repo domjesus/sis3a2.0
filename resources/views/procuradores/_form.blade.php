@@ -9,6 +9,17 @@
 <label>Telefone:</label><input type='text' id='telefone' name='telefone' class='texto_md' placeholder='Nr de Telefone' required value='{{$procurador['telefone'] or ''}}'></input><br />
 <label>Celular:</label><input type='text' id='celular' name='celular' class='texto_md' placeholder='Nr de Telefone Celular' value='{{$procurador['celular'] or ''}}'></input><br />
 <label>E-mail:</label><input type='email' id='email' name='email' class='texto_md' placeholder='E-mail' value='{{$procurador['email'] or ''}}'></input><br />
+ @if(isset($procurador))
+ <label>Ativo:</label>
+
+ @if($procurador->ativo))
+  <input type='radio' name='ativo' checked></input> Sim
+  <input type='radio' name='ativo'></input> Nao<br />
+ @else
+  <input type='radio' name='ativo'></input> Sim
+  <input type='radio' name='ativo' checked></input> Nao<br />
+ @endif
+ @endif
 <p id='status' />
 
 </div>

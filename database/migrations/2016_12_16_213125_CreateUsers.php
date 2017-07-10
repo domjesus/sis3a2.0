@@ -18,9 +18,13 @@ class CreateUsers extends Migration
             $table->string('matricula')->unique();
             $table->string('nome');
             $table->string('passwd');
-            $table->string('nivel_acesso');
+            $table->integer('nivel_acesso');
+            $table->foreign('nivel_acesso')->references('id')->on('nivel_acessos');
             $table->string('id_ol');
+            $table->foreign('id_ol')->references('id')->on('ols');
             $table->string('id_cargo');
+            $table->foreign('id_cargo')->references('id')->on('cargos');
+            $table->boolean('ativo');
             $table->timestamps();
         });
     }

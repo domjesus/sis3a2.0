@@ -53,5 +53,6 @@ class Kernel extends HttpKernel
         'check' => \sis3a_oficial\Http\Middleware\CheckSession::class,
         'admin' => \sis3a_oficial\Http\Middleware\AdminChecker::class,
         'checkuser' => \sis3a_oficial\Http\Middleware\CheckUserAltSenha::class,
+        'checkid' => \sis3a_oficial\Http\Middleware\Is_from_ol_id::class,
     ];
 }

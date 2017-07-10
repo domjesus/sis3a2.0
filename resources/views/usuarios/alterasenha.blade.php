@@ -3,7 +3,7 @@
 
 @section('content')
 <div id='alt_senha'>
-<form id='frm_altera_senha' onsubmit="return valida(this);" action="/altera_senha/{{$user['id']}}" method="post">
+<form id='frm_altera_senha' onsubmit="return valida(this);" action="/senha/altera/{{$user['id']}}" method="post">
 <input type='hidden' name='_token' value='{{csrf_token()}}' />
 <fieldset><legend>Alterar Senha</legend></fieldset>
 

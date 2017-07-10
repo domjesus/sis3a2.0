@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
     	DB::table('users')->insert([
     		'nome'=>'wandeir carneiro',
     		'matricula'=>'1563654',
-    		'passwd'=>'1234',
+    		'passwd'=>md5('1234'),
     		'nivel_acesso'=>'2',
     		'id_ol'=>'1',
     		'id_cargo'=>'2',
@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'nome'=>'gabi campana',
             'matricula'=>'1563653',
-            'passwd'=>'1234',
+            'passwd'=>md5('1234'),
             'nivel_acesso'=>'1',
             'id_ol'=>'2',
             'id_cargo'=>'1',

@@ -203,7 +203,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,       
+        'Html' => Collective\Html\HtmlFacade::class,
+        'TrataDatas'=> sis3a_oficial\Http\MiddleWare\util\TrataDatas::class,
 
     ],
 

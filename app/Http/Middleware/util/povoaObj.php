@@ -16,8 +16,10 @@
   public function povoa(){
    foreach ($this->request->input() as $key => $value) {
          //echo "Nome: $key -> Value: $value <br />";
+         
+         //UTILIZADO PARA TRANSFORMAR A DATA PT-BR(dd/mm/yyyy) PARA US(yyyy-mm-dd)
          if(substr($key, 0,2) == 'dt')
-          $value = TrataDatas::trata_data($value);
+          $value = TrataDatas::convertDateToUs($value);
 
          if($value == 'on')
           $value = true;
@@ -29,5 +31,6 @@
 
         return $this->model;
   }
+
  }
 ?>

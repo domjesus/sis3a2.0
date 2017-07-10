@@ -18,12 +18,15 @@ class CreateTableProcessos extends Migration
             ***/
             $table->increments('id');
             $table->integer('id_tipo_processo');
+            $table->foreign('id_tipo_processo')->references('id')->on('tipo_processos');
             $table->integer('id_especie');
+            $table->foreign('id_especie')->references('id')->on('especies');
             $table->string('nb');            
             $table->string('nome');            
             $table->date('dt_der');
             $table->date('dt_dhb');
             $table->integer('id_procurador');
+            $table->foreign('id_procurador')->references('id')->on('procuradores');
             $table->text('status')->nullable();
             $table->boolean('exigencia')->nullable();          
             $table->boolean('exigencia_cumprida')->nullable();          
@@ -39,7 +42,8 @@ class CreateTableProcessos extends Migration
             $table->string('end_cidade')->nullable();
             $table->string('end_uf')->nullable();                                                
             $table->string('end_cep')->nullable();
-            $table->integer('id_status_p04')->nullable();
+            $table->integer('p04status_id')->nullable();
+            $table->foreign('p04status_id')->references('id')->on('p04status');
             $table->date('dt_nascimento')->nullable();
             $table->date('dt_ddb')->nullable();
             $table->boolean('prioridade')->nullable();
@@ -52,8 +56,9 @@ class CreateTableProcessos extends Migration
             $table->date('dt_ciencia')->nullable();
             $table->date('dt_pericia')->nullable();
             $table->time('hora_pericia')->nullable();
-            $table->integer('id_medico')->nullable();
-            $table->integer('id_conclusao_pericia')->nullable();
+            $table->integer('id_medico')->nullable();            
+            $table->integer('p04concpericia_id')->nullable();
+            $table->foreign('p04concpericia_id')->references('id')->on('p04concpericia');
             $table->date('dt_dcb')->nullable();
             $table->text('observacoes_p04')->nullable();
             
@@ -63,7 +68,8 @@ class CreateTableProcessos extends Migration
             $table->string('origem')->nullable();
             $table->string('local')->nullable();
             $table->char('cmd_sipps',9)->nullable();
-            $table->integer('id_status_mob')->nullable();            
+            $table->integer('mobstatus_id')->nullable();            
+            $table->foreign('mobstatus_id')->references('id')->on('mobstatus');
             $table->string('resumo')->nullable();
             $table->date('dt_ult_prov')->nullable();
             $table->string('resumo_ult_prov')->nullable();
@@ -75,14 +81,15 @@ class CreateTableProcessos extends Migration
             $table->boolean('apenso')->nullable();
             $table->string('nb_apenso')->nullable();
             $table->boolean('sicau')->nullable();
+            $table->boolean('sicalc')->nullable();
             $table->boolean('siafi')->nullable();
             $table->string('siafi_txt')->nullable();
             $table->boolean('cadin')->nullable();
             $table->string('cadin_txt')->nullable();
             $table->boolean('demanda_sobrestada')->nullable();
-            $table->string('sobrestamento_motivo')->nullable();
-            $table->date('dt_sobrestamento')->nullable();
-            $table->integer('sobrestamento_prazo')->nullable();
+            $table->string('sobrestado_motivo')->nullable();
+            $table->date('dt_sobrestado')->nullable();
+            $table->integer('sobrestado_prazo')->nullable();
             $table->boolean('edital')->nullable();
             $table->date('dt_edital')->nullable();
             $table->boolean('quitada')->nullable();
@@ -92,12 +99,12 @@ class CreateTableProcessos extends Migration
             $table->string('parcelado_obs')->nullable();
             $table->date('dt_parcelamento')->nullable();
             $table->date('dt_quitacao_1a_guia')->nullable();
-            $table->boolean('demanda_concluisa')->nullable();
+            $table->boolean('demanda_concluida')->nullable();
             
-            $table->integer('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('ol_id');
-            $table->foreign('ol_id')->references('id')->on('ols');
+            $table->integer('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->integer('id_ol');
+            $table->foreign('id_ol')->references('id')->on('ols');
             $table->boolean('ativo');
             $table->timestamps();
         });

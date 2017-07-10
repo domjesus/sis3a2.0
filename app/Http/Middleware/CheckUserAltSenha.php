@@ -15,8 +15,9 @@ class CheckUserAltSenha
      */
     public function handle($request, Closure $next)
     {
-        if(session('user_id') != $request->id)
-            return response()->view('acess_denied');
+        if(isset($request->id))
+         if(session('id_user') != $request->id)
+          return response()->view('acess_denied');
 
         return $next($request);
     }

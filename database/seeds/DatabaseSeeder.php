@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(NivelAcessoTableSeeder::class);
         $this->call(OlTableSeeder::class);
         $this->call(EspecieTableSeeder::class);
+        $this->call(ComunicadosSeeder::class);
     }
 }

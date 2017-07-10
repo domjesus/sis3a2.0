@@ -54,7 +54,7 @@
      @endforeach
   </select> <br />
     		
-    		<label>id_cargo:</label>
+    		<label>Cargo:</label>
    <select id='id_cargo' name='id_cargo'>
   	 <option value='0'>Selecione...</option>
      @foreach($cargo as $cargo)
@@ -69,6 +69,18 @@
        @endif
       @endforeach
    </select> <br />
+
+     <label>Ativo:</label>
+      @if(isset($user))
+       @if($user['ativo'])
+        <input type='radio' name='ativo' checked/> Sim
+        <input type='radio' name='ativo' /> Nao
+       @else
+        <input type='radio' name='ativo' /> Sim
+        <input type='radio' name='ativo' checked/> Nao
+       @endif
+      @endif
+
 
 
 @stack('scripts')

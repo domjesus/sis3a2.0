@@ -17,7 +17,7 @@
 
  @foreach($procuradores as $proc)
     
-  	<tr>
+  	<tr id='{{$proc->id}}'>
  		<td>{{$proc->nome}}</td>
  	    <td>{{$proc->oab}}</td>
  	    <td>{{$proc->nit}}</td>
@@ -29,14 +29,20 @@
  	     <td>SIM</td>
  	    @else<td>NÃO</td>
  	    @endif
-
- 	    @if($proc->id_servidor == session('id_user'))
+	   <td>
+ 	  
+ 	    @if($proc->id_servidor == session('user_id'))
  	     @if($proc->ativo)
- 	  	  <td><a href='/procurador_incluir/{{$proc->id}}'><spam class='glyphicon glyphicon-pencil btn btn-default btn-sm' title='Alterar'></spam></a></td>    
+ 	  	  	<a href='/procurador/incluir/{{$proc->id}}'><spam class='glyphicon glyphicon-pencil btn btn-default btn-xs' title='Alterar'></spam></a>
+            <a href='#' id='inativar'><spam  class='glyphicon glyphicon-trash btn btn-danger btn-xs' title='Excluir/Inativar procurador!'></spam></a>
+         @else
+            <a href='/procurador/incluir/{{$proc->id}}' id='reativar'><spam  class='glyphicon glyphicon-pencil btn btn-default btn-xs' title='Reativar Procurador!'></spam></a>
  	     @endif
  	    @else
  	     <td><a onclick='alert("Somente quem cadastrou pode alterar");' title='Somente quem cadastrou pode alterar!'><spam class='glyphicon glyphicon-pencil btn btn-default btn-sm'  disabled></spam></a></td>
  	    @endif
+ 	   </td>    
+ 	 
  	</tr>
  	@endforeach
 </table>
@@ -46,7 +52,19 @@
 <script>
 $(function(){
  $("#tbl_procur").dataTable();
+
+	$(document).on('click','#inativar',function(){
+      id = $(this).parent().parent().attr('id');
+
+      $.post('/procurador/inativar/'+id,{'_token':'{{csrf_token()}}' },function(resposta){
+        alert(resposta);
+      });//end post
+    });//end event
+
+
 });
+
+
 
 </script>
 

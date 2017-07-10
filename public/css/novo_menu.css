@@ -153,14 +153,7 @@ color: white;
   vertical-align: center;
  }
 
- .main{
-height:20px;
-width: 100%;
-background-color:#005e91;
-text-align:left;
-border-radius:0px;
-//margin-bottom:3px;
-}
+ 
 
 .header{	
 	background-color: #002437;
@@ -201,19 +194,40 @@ border-radius:0px;
 
 
 
+
+
+.tudo{
+	width: 100%;
+	height: 90%;
+	background-color: #dee;
+	}
+
+	.main{
+height:20px;
+width: 100%;
+overflow: visible;
+background-color:#005e91;
+text-align:left;
+border-radius:0px;
+//margin-bottom:3px;
+}
+
 .conteudo{ 
-  
- width: 95%;
- height: 80%; 
- //position: absolute; 
  
- margin-left: 40px;  	 
+ height:490px; 
+ width: 100%;
+ 
+ //position: absolute; 
+ background-repeat: no-repeat;
+ background-position: 50% 50%;
+ 
+
+ //margin-left: 40px;  	 
  //margin-bottom:10px;	  
    
  z-index:151; 
- //overflow: auto;
- display: table;  
- text-align:left; 
+ overflow: auto;
+ //display: table;  
  padding-left:10px; 
  padding-right:10px; 
  padding-top:10px;   
@@ -221,8 +235,3 @@ border-radius:0px;
  background-color: #B3B3Be; 
  border: 1px dotted black;   
 }
-
-.tudo{
-	height: 90%;
-	background-color: #ddd;
-	}

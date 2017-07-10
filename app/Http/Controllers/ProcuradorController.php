@@ -19,7 +19,7 @@ class ProcuradorController extends Controller
     	$povoa = new povoaObj(new Procurador,$request,array(''));
     	$model = $povoa->povoa();
         $model->__set('id_ol',session('id_ol'));
-        $model->__set('id_servidor',session('id_user'));
+        $model->__set('id_user',session('id_user'));
         $model->__set('ativo',1);
 
     	if(!$model->save())
@@ -44,11 +44,21 @@ class ProcuradorController extends Controller
 
 
     public function listar(){
-    	$procuradores = Procurador::all();
+    	$procuradores = Procurador::all()->where('id_ol',session('id_ol'));
     	return view('procuradores.listar',['procuradores'=>$procuradores]);
     }
 
-    public function excluir(){
+    public function inativar(Request $request){
+
+        $procurador = Procurador::find($request->id);
+
+        $procurador->__set('ativo',0);
+
+        if(!$procurador->save())
+            return "Erro ao gravar!";
+
+        return "Gravado com Sucesso!";
+    
     	
     }
 }

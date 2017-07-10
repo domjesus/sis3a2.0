@@ -6,28 +6,30 @@
 <title>Sis3A - Sistema de Apoio Administrativo na APS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<link rel="stylesheet" href="../css/jquery-ui-1.9.2-custom.css" type="text/css"></link>
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css"></link>
-<link rel="stylesheet" href="../css/bootstrap-theme.min.css" type="text/css"></link>
+<link rel="stylesheet" href="../../css/jquery-ui-1.9.2-custom.css" type="text/css"></link>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css"></link>
+<link rel="stylesheet" href="../../css/bootstrap-theme.min.css" type="text/css"></link>
 
 <!--  -->
 
-<link rel="stylesheet" href="../css/dataTables.min.css" type="text/css"></link>
-<link href="../css/novo_menu.css" rel="stylesheet"></link>
+<link rel="stylesheet" href="../../css/dataTables.min.css" type="text/css"></link>
+<link href="../../css/novo_menu.css" rel="stylesheet"></link>
 
 @push('scripts')
-<script type="text/javascript" src="../js/jquery.js" charset="utf-8"></script>
-<script type="text/javascript" src="../js/jquery-ui-192-custom.js"></script>
-<script type="text/javascript" src="../js/jquery.blockUI.js"></script>
-<script type="text/javascript" src="../js/jquery.form.js"></script>
-<script type="text/javascript" src="../js/jquery.mask.js">     </script> 
-<script type="text/javascript" src="../js/submiting.form.ajax.js"></script>
-<script type="text/javascript" src="../js/dataTable.js"></script>
+<script type="text/javascript" src="../../js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/jquery-ui-192-custom.js"></script>
+<script type="text/javascript" src="../../js/jquery.blockUI.js"></script>
+<script type="text/javascript" src="../../js/jquery.form.js"></script>
+<script type="text/javascript" src="../../js/jquery.mask.js">     </script> 
+<script type="text/javascript" src="../../js/submiting.form.ajax.js"></script>
+<script type="text/javascript" src="../../js/dataTable.js"></script>
+<script type="text/javascript" src="../../js/sis3a.js"></script>
+
 @endpush
 
-<script type="text/javascript" src="../js/dataTable_dateUK.js"></script>
-<script type="text/javascript" src="../js/jquery.dropdown.js"></script>
-<script type="text/javascript" src="../js/jquery.dropdownPlain.js"></script>
+<script type="text/javascript" src="../../js/dataTable_dateUK.js"></script>
+<script type="text/javascript" src="../../js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../../js/jquery.dropdownPlain.js"></script>
 
 
 <!--
@@ -45,7 +47,7 @@ OLD MENU
 
 <div id='main' class='main'>
  <div id='header' class='header'>
-   <strong style='font-size: 12px; padding-left: 16px;' title='Sistema de Apoio Administrativo na APS'><p style='color: white;'>Sis3A</p></strong>
+   <strong style='font-size: 12px; padding-left: 16px;' title='Sistema de Apoio Administrativo na APS'><p style='color: white;'>Sis3A - {{session('ol_numero')}}</p></strong>
  </div><!--  FIM DA DIV HEADER -->
 	   <div id='logon' class='logon'>
 	     <strong><span style='color: white'>Logado como: </span></strong>
@@ -69,20 +71,21 @@ OLD MENU
     
     <li><a href='#'><span class='glyphicon glyphicon-th'></span> Processos</a>
      <ul>
-	<li><a href='/processos_incluir/'><spam class='glyphicon glyphicon-plus-sign'></spam> Incluir</a></li>      <li>
- 	   <a href='/processos_represados/'><spam class='glyphicon glyphicon-th'></spam> Represados</a>
+	<li><a href='/processos/incluir/'><spam class='glyphicon glyphicon-plus-sign'></spam> Incluir</a></li>      <li>
+ 	   <a href='/processos/represados/'><spam class='glyphicon glyphicon-th'></spam> Represados</a>
 	  </li>
 	  <li><a href="principal.php?rota=rep_por_usuario"><spam class='glyphicon glyphicon-list-alt'></spam> Por usuario</a></li>	  
    	  <li>
  	   <a href="principal.php?rota=represados_gera_lista"><spam class='glyphicon glyphicon-book'></spam> Gerar Lista</a>
    	  </li>   	     	     	     	  
+   	  <li><a href="/processos/concluidos"><spam class='glyphicon glyphicon-folder-close'></spam> Condluidos</a></li>
 	</ul>
 	
 	<li>
-   	   <a href='#'><spam class='glyphicon glyphicon-list-alt'></spam> Exigências</a>
+   	   <a href='#'><spam class='glyphicon glyphicon-list-alt'></spam> Documentos</a>
    	   <ul>
    	   <li>
-   	     <a href='#'>Consultar/Excluir</a>
+   	     <a href='#'>Exigencias Consultar/Excluir</a>
    	    </li>
    	    <li>
    	      <a href="#" target='_blank'> Manual</a>
@@ -93,30 +96,30 @@ OLD MENU
     
   
    </li>
-   <li><a href="principal.php?rota=ConsultaConcluidos"><spam class='glyphicon glyphicon-folder-close'></spam> Concluidos</a></li>
-     
+        
    <li><a href='#'><spam class='glyphicon glyphicon-plus'></spam> Procuradores</a>
    <ul>
-    <li><a href="/procurador_incluir">Incluir</a></li>
-	<li><a href='/procurador_listar/'>Consultar/alterar</a></li>	
+    <li><a href="/procurador/incluir">Incluir</a></li>
+	<li><a href='/procurador/listar/'>Consultar/alterar</a></li>	
    </ul>   
    
    <li><a href='#'><spam class='glyphicon glyphicon-shopping-cart'></spam> Carga</a>
 
    <ul>
-    <li><a href='/carga_incluir/'>Incluir</a>
+    <li><a href='/carga/ativos/'>Alterar/Consultar</a>
     </li>
-    <li><a href='/carga_listar/'>Alterar/Consultar</a>
+        <li><a href='/carga/inativos/'> Inativos</a>
     </li>    
+    
    </ul>
   </li>
   
   <li><a href='#'><spam class='glyphicon glyphicon-file'></spam> Fundamentacao</a>
 
    <ul>
-    <li><a href='principal.php?rota=fund_incluir'>Incluir</a>
+    <li><a href='/fundamentacao/incluir/'> Incluir</a>
     </li>
-    <li><a href='principal.php?rota=fund_alterar'>Alterar/Excluir</a>
+    <li><a href='/fundamentacao/listar/'> Alterar/Excluir</a>
     </li>    
    </ul>
   </li>
@@ -173,10 +176,10 @@ OLD MENU
 	    <li><a href="">Usu&aacute;rio</a>
 		 <ul>
 		  <li> 
-		   <a href='/usuarios_incluir/'>Incluir</a>
+		   <a href='/usuarios/incluir/'>Incluir</a>
 		  </li>
 		  <li>
-		   <a href='/usuarios_listar/'>Alterar/excluir</a>
+		   <a href='/usuarios/listar/'>Alterar/excluir</a>
 		  </li>		  
 		 </ul>		   
 		</li>	
@@ -250,28 +253,22 @@ OLD MENU
 
 <li><a href="#"><spam class='glyphicon glyphicon-folder-open'></spam> Portaria 04</a>
     <ul>
-	  <li><!-- <a href='principal.php?rota=portaria04'><spam class='glyphicon glyphicon-plus-sign'></spam> Incluir</a> NOVA TELA DE FORM PRA INCLUIR REGISTRO-->
-	   <a href='principal.php?rota=portaria_04_incluir'><spam class='glyphicon glyphicon-plus-sign'></spam> Incluir</a> 
-      </li>
 	  <li>
-	    <a href='principal.php?rota=portaria04_consultar'><spam class='glyphicon glyphicon-search'></spam> Consultar/Alterar</a>
+	    <a href='/portaria04_listar/'><spam class='glyphicon glyphicon-search'></spam> Consultar/Alterar</a>
       </li>
 	  	  <li>
 	    <a href='#'><spam class='glyphicon glyphicon-envelope'></spam> Cartas</a>
 		<ul>
 		 <li>
-		  <a href='principal.php?rota=portaria04_convocacao'>Convocação</a>
+		  <a href='/portaria04/cartas/convocacao/'>Convocação</a>
 		 </li>
 		 <li>
-		  <a href='principal.php?rota=portaria_04_carta_decisao'>Decisão</a>
+		  <a href='/portaria04/cartas/decisao/'>Decisão</a>
 		 </li>
 		</ul>
       </li>
 	  <li>
-	    <a href='principal.php?rota=portaria04_status'><spam class='glyphicon glyphicon-pencil'></spam>Alterar Status</a>
-      </li>
-      <li>
-	    <a href='principal.php?rota=portaria04_excluir'><spam class='glyphicon glyphicon-trash'></spam>Excluir Registro</a>
+	    <a href='/portaria04/status/'><spam class='glyphicon glyphicon-pencil'></spam>Alterar Status</a>
       </li>
       
       <li><a href='#'><spam class='glyphicon glyphicon-list'></spam>Relatorios</a>
@@ -361,7 +358,7 @@ OLD MENU
 <a href='#'><spam class='glyphicon glyphicon-envelope'></spam> Comunicados</a>
  <ul>
   <li>
-   <a href='principal.php?rota=comunicados'><spam class='glyphicon glyphicon-plus-sign'></spam> Incluir</a>
+   <a href='/comunicados_incluir/'><spam class='glyphicon glyphicon-plus-sign'></spam> Incluir</a>
   </li>
   
   <li>
@@ -399,9 +396,6 @@ OLD MENU
 	 <a href='#'><spam class='glyphicon glyphicon-eye-open'></spam> MOB</a>
 	 <ul>
 	  <li>
-	   <a href='principal.php?rota=mob_cadastrar'><spam class='glyphicon glyphicon-plus'></spam> Cadastrar</a>
-	  </li>
-	  <li>
 	   <a href='principal.php?rota=mob_consultar'><spam class='glyphicon glyphicon-info-sign'></spam> Consultar</a>
 	  </li>
 	  <li>
@@ -429,24 +423,6 @@ OLD MENU
 	 </ul>	 
     </li>
 
-   <li>	
-	 <a href='#'><spam class='glyphicon glyphicon-eye-open'></spam> FBR</a>
-	 <ul>
-	  <li>
-	   <a href='principal.php?rota=fbr_incluir'><spam class='glyphicon glyphicon-plus'></spam> Cadastrar</a>
-	  </li>	  
-	  <li>
-	   <a href='principal.php?rota=fbr_listar'><spam class='glyphicon glyphicon-pencil'></spam> Alterar/Analisar</a>
-	  </li>	  
-	  	  
-	  <li>
-	   <a href='principal.php' onclick="javascript:alert('Em desenvolvimento')"><spam class='glyphicon glyphicon-book'></spam> Inativos</a>
-	  </li>
-	  
-	   <li><a href='#' onclick="javascript:alert('Em desenvolvimento')"><spam class='glyphicon glyphicon-eye-open'></spam> Relat&oacute;rios</a>	    
-	  </li>
-	 </ul>	 
-    </li>
 
 </ul>
 <!--  FIM DA UL 'DROPDOWN' QUE GERENCIA O MENU-->
@@ -493,7 +469,7 @@ OLD MENU
 </div> <!--fim da div conteudo -->
 <div id='aux_footer' class='aux_footer'>
       <div id='footer' class='footer'>
-       <div class="container"">
+       <div class="container">
         <p class="text-muted">INSS - Instituto Nacional do Seguro Social - APS Canela - 19.022.020  - Desenvolvido por <a href="mailto:wandeir.souza@inss.gov.br">Wandeir Carneiro</a></p>
       </div>      
 	 </div><!--fim da div footer -->
@@ -507,132 +483,3 @@ OLD MENU
 
 </body> 
 </html>
-
-
-
-<script type="text/javascript">
-
-$("a[name^='a_news']").click(function(){
-	var tit = $(this).attr("val");
-
-	$("#news_big").empty().append(tit).dialog({
-		height:300,
-		width: 450,
-		modal: true,
-		resizable: false,	   
-	});	
-});
-
-$(function(){
-
-	$("a[name^='fecha_div_child']").click(function(){
-		var div = $(this).parent();
-		div.hide(2000);
-		var nome = div.attr("id");
-		if(nome == "news_child")
-		 $("#news_child2").css({"width":"100%"});
-		else $("#news_child").css({"width":"100%"}); 
-	});
-
-	$("a[name^='mostra_div_child']").click(function(){
-		$("#news_child").css({"width":"40%"}).show(2000);
-		$("#news_child2").css({"width":"48%"}).show(2000);
-		
-	});
-
-	$("a[name^='fecha_tudo']").click(function(){
-		$("#news").fadeOut(2000);
-			$("a[name^='mostrar_news']").css({"visibility":"visible"}).addClass("btn btn-info");				
-	});
-
-	$("a[name^='mostrar_news']").click(function(){ 
-		$("#news").slideDown(2000);
-		$("a[name^='mostrar_news']").css({"visibility":"hidden"}); 
-	});
-
-	$("#quick_search_name").on('focus',function(){
-     $(this).next().val("");
-     $("#quick_search_p").hide();
-    });
-
-	$("#quick_search_nb").on('focus',function(){
-	     $(this).prev().val("");
-	     $("#quick_search_p").hide();
-	    });
-
-	$("#quick_search_nb").mask('000.000.000-0');
-
-	
-	$("#quick_search_btn").on('click',function(){
-		nome = $(this).prev().prev().val();
-		nb = $(this).prev().val();
-		
-
-		$.post("ajax/search_process_all_tables.php",{flag:"consulta_todas_tabelas",nome:nome,nb:nb},function(resposta){
-			$("#quick_search_p").show().empty().text(resposta);
-			//alert(resposta);
-	    });
-
-    });
-    
-});
-
-</script>
-
-
-<style type="text/css">
-
-
-.conteudo{
-//background-image: url('img/previdencia_sec.jpg');
-background-repeat: no-repeat;
-background-position: 50% 50%;
-height:500px;
-}
-
-.fecha_div_child,.fecha_div_child_2,.mostra_div_child{
- position: relative; 
- float: right;
- background-color: #39b3d7;
- color: white;
- border-radius: 3px;
-}
-
-.fecha_tudo{
- float:right;   
- background-color: #a94442;
- color: black;
- margin-left:5px; 
-}
-
-.mostrar_news{ 
- //padding-top: 300px;
- bottom: 90px;
- right:100px;
- position: absolute; 
- visibility:hidden; 
- //background-color:#f2dede;
- //color:#a94442;
- color: black;
- border:1px solid transparent #dca7a7;
- border-radius:4px; 
-}
-
-#div_aux{
- //height: 270px;  
-}
-
-#news{
- margin-top: 30px;
-}
-
-#atalhos{
- background-color: #fffeee;
- width: 100%; 
- //margin-top: 80px;
- padding-bottom: 8px;
- border-radius: 6px;
- 
-}
-
-</style>

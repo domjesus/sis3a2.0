@@ -11,7 +11,7 @@
                 <div class="panel-heading">Pagina Principal</div>
 
                 <div class="panel-body">
-                    Nome do user: {{session('user_name')}} Voce esta logado!
+                    Nome do user: {{session('user_name')}} Voce esta logado no OL <b>{{session('ol_nome')}}</b>!
                 </div>
             </div>
         </div>

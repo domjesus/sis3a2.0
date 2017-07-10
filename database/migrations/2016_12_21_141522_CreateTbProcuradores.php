@@ -15,14 +15,17 @@ class CreateTbProcuradores extends Migration
         Schema::create('procuradores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->string('oab')->unique()->nullable();
-            $table->string('nit')->unique()->nullable();
+            $table->string('oab')->nullable();
+            $table->string('nit')->nullable();
             $table->string('escritorio')->nullable();
             $table->string('telefone');
             $table->string('celular')->nullable();
             $table->string('email')->nullable();
             $table->string('id_ol');
-            $table->string('id_servidor');
+            $table->foreign('id_ol')->references('id')->on('ols');
+            $table->string('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
+
             $table->smallinteger('ativo');            
             $table->timestamps();
         });
