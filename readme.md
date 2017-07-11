@@ -1,1 +1,0 @@
-Desenvolvimento do Sis3A com Laravel 5.* e composer. 
